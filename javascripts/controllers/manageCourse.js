@@ -39,6 +39,6 @@ $(function() {
 
 /* filter the search box */
 function filter() {
-    var courses = "{{courses}}"
+    var courses = "{{courses}}";
     alert(courses);
 }
