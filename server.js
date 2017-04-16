@@ -58,13 +58,25 @@ app.get('/dashboard', function (request, response) {
   response.end(html);
 });
 
+var user = "";
 var manageCoursePage = fs.readFileSync(mustachePath + 'manageCourse.mustache').toString();
 app.get('/manageCourse', function (request, response) {
   response.writeHead(200, {
     'Content-Type': 'text/html'
   });
 
-  var html = Mustache.render(manageCoursePage);
+  var courses = [];
+
+  client.smembers("ClassTranscribe::Classes", function(err, result) {
+    if(result) {
+      courses = result;
+    }
+  });
+  
+  var view = {
+    courses: courses
+  };
+  var html = Mustache.render(manageCoursePage, view);
   response.end(html);
 });
 
