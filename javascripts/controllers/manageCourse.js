@@ -45,7 +45,7 @@ function filter(event) {
     client.smembers("ClassTranscribe::Classes", function(err, result) {
         if(result) {
             result.forEach(function(member) {
-                $("search-results").append("<p>"+ member +"</p>")
+                $(".search-results").append("<p>"+ member +"</p>")
             });
         }
     });
