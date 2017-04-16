@@ -40,6 +40,7 @@ $(function() {
 
 /* filter the search box */
 function filter(event) {
+    alert("typing");
     var query = $(".search").val().toLowerCase();
     query = query.trim().replace(/[.,!"?()]/g,"").replace(/-/g, " ").split(/\s+/);
     client.smembers("ClassTranscribe::Classes", function(err, result) {
