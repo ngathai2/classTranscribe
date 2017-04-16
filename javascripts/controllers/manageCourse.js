@@ -1,5 +1,3 @@
-var client = require('./modules/redis');
-
 /* source: http://stackoverflow.com/questions/11406605/how-to-make-a-link-act-as-a-file-input */
 /* when "upload-link" is clicked, trigger the event for the upload button*/
 $(function(){
@@ -40,17 +38,7 @@ $(function() {
 });
 
 /* filter the search box */
-function filter(event) {
-    client.on("monitor", function (time, args, raw_reply) {
-        console.log(time + ": " + args); // 1458910076.446514:['set', 'foo', 'bar']
-    });
-    var query = $(".search").val().toLowerCase();
-    query = query.trim().replace(/[.,!"?()]/g,"").replace(/-/g, " ").split(/\s+/);
-    client.smembers("ClassTranscribe::Classes", function(err, result) {
-        if(result) {
-            result.forEach(function(member) {
-                $(".search-results").append("<p>"+ member +"</p>")
-            });
-        }
-    });
+function filter() {
+    var courses = "{{courses}}"
+    alert(courses);
 }
