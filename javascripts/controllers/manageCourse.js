@@ -1,4 +1,6 @@
 
+var client = require('./modules/redis');
+
 /* source: http://stackoverflow.com/questions/11406605/how-to-make-a-link-act-as-a-file-input */
 /* when "upload-link" is clicked, trigger the event for the upload button*/
 $(function(){
@@ -40,8 +42,8 @@ $(function() {
 
 /* filter the search box */
 function filter(event) {
-    alert("typing");
     var query = $(".search").val().toLowerCase();
+    alert(query);
     query = query.trim().replace(/[.,!"?()]/g,"").replace(/-/g, " ").split(/\s+/);
     client.smembers("ClassTranscribe::Classes", function(err, result) {
         if(result) {
