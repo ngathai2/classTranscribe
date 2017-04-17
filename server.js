@@ -48,6 +48,7 @@ app.get('/', function (request, response) {
   response.end(html);
 });
 
+/* display the dashboard after logging in */
 var loginHomePage = fs.readFileSync(mustachePath + 'dashboard.mustache').toString();
 app.get('/dashboard', function (request, response) {
   response.writeHead(200, {
@@ -58,6 +59,7 @@ app.get('/dashboard', function (request, response) {
   response.end(html);
 });
 
+/* display manageCourse.mustache */
 var manageCoursePage = fs.readFileSync(mustachePath + 'manageCourse.mustache').toString();
 app.get('/manageCourse', function (request, response) {
   response.writeHead(200, {
@@ -68,11 +70,13 @@ app.get('/manageCourse', function (request, response) {
   response.end(html);
 });
 
+/* get the list of courses available */
 app.get('/get_user_courses', function(request, response) {
   response.writeHead(200, {
     'Content-Type': 'text/html'
   });
   client.smembers("ClassTranscribe::Classes", function(err, result) {
+    console.log("getting the courses");
     if(err) {
       console.log(err);
     }
