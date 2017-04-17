@@ -71,7 +71,8 @@ app.get('/manageCourse', function (request, response) {
 });
 
 /* get the list of courses available */
-app.get('/get_user_courses', function(request, response) {
+app.get('/manageCourse/get_user_courses', function(request, response) {
+  console.log('server about to get courses');
   response.writeHead(200, {
     'Content-Type': 'text/html'
   });
