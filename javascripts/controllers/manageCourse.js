@@ -40,13 +40,9 @@ $(function() {
 /* filters searches */
 function filter() {
     $.ajax({
-        type: "POST",
-        url: "/manageCourse/get_user_courses",
-        data: {
-            user: "",
-        },
+        type: "GET",
+        url: "/get_user_courses",
         success: function(data) {
-            alert(data);
         }
     });
 }
