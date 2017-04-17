@@ -40,8 +40,8 @@ $(function() {
 /* filters searches */
 function filter() {
     $.ajax({
-        type: "GET",
-        url: "/get_user_courses",
+        type: "POST",
+        url: "/manageCourse/get_user_courses",
         data: {
             user: "",
         },
