@@ -41,7 +41,7 @@ $(function() {
 function filter() {
     $.ajax({
         type: "GET",
-        url: "/get_user_courses",
+        url: "/manageCourse/get_user_courses",
         success: function(data) {
             console.log(data);
         }

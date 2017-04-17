@@ -71,14 +71,14 @@ app.get('/manageCourse', function (request, response) {
 });
 
 /* get the list of courses available */
-app.post('/manageCourse/get_user_courses', function(request, response) {
+app.get('/manageCourse/get_user_courses', function(request, response) {
   console.log('server about to get courses');
-  /**client.smembers("ClassTranscribe::Classes", function(err, result) {
+  client.smembers("ClassTranscribe::Classes", function(err, result) {
     console.log("getting the courses");
     if(err) {
       console.log(err);
     }
-  });**/
+  });
   response.send("testing to see if we get a response");
 });
 
