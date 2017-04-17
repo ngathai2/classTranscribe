@@ -43,6 +43,7 @@ function filter() {
         type: "GET",
         url: "/get_user_courses",
         success: function(data) {
+            console.log(data);
         }
     });
 }
