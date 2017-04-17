@@ -78,7 +78,7 @@ app.get('/manageCourse/get_user_courses', function(request, response) {
     if(err) {
       console.log(err);
     }
-    response.send(result);
+    response.send("testing to see if we get a response");
   });
 });
 
