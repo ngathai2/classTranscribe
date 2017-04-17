@@ -37,8 +37,16 @@ $(function() {
     })
 });
 
-/* filter the search box */
+/* filters searches */
 function filter() {
-    var courses = "{{courses}}";
-    alert(courses);
+    $.ajax({
+        type: "GET",
+        url: "/get_user_courses",
+        data: {
+            user: "",
+        },
+        success: function(data) {
+            alert(data);
+        }
+    });
 }
