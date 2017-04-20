@@ -77,7 +77,7 @@ app.get('/manageCourse/get_user_courses', function(request, response) {
       console.log(err);
     }
     //response.send("testing server");
-    response.send(result);
+    response.end(result);
   });
 });
 
