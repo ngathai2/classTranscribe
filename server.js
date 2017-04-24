@@ -621,7 +621,7 @@ client.on("monitor", function (time, args, raw_reply) {
 });
 
 client.on('error', function (error) {
-	console.log('redis error');
+	console.log('redis error', error);
 });
 
 var port = 80;
