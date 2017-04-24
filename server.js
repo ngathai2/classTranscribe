@@ -6,7 +6,7 @@ var zlib = require('zlib');
 var path = require('path');
 var mime = require('mime');
 var webvtt = require('./modules/webvtt');
-var redis = require('redis');
+var client = require('./modules/redis');
 var mailer = require('./modules/mailer');
 var validator = require('./modules/validator');
 var spawn = require('child_process').spawn;
@@ -15,17 +15,11 @@ var bodyParser = require('body-parser')
 
 var app = express();
 
-var client = redis.createClient(); // creates a new client
-
 app.use(bodyParser.json());         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 app.use(express.static('public'));
-
-client.on('connect', function() {
-  console.log('connected');
-});
 
 client.on("monitor", function (time, args, raw_reply) {
     console.log(time + ": " + args); // 1458910076.446514:['set', 'foo', 'bar']
@@ -42,7 +36,6 @@ var exampleTerms = {
   "ece210": "Energy Signals",
   "cs446-fa16": "Decision Trees"
 }
-
 
 var homeMustache = fs.readFileSync(mustachePath + 'home.mustache').toString();
 app.get('/', function (request, response) {
@@ -82,7 +75,7 @@ app.get('/manageCourse/get_user_courses', function(request, response) {
   client.smembers("ClassTranscribe::Classes", function(err, result) {
     console.log("making query");
     if(err) {
-      console.log("there is an error");
+      console.log("there is an");
     }
     console.log(result);
     response.end(result);
