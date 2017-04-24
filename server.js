@@ -23,6 +23,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(express.static('public'));
 
+client.on('connect', function() {
+  console.log('connected');
+});
+
 client.on("monitor", function (time, args, raw_reply) {
     console.log(time + ": " + args); // 1458910076.446514:['set', 'foo', 'bar']
 });
