@@ -6,7 +6,7 @@ var zlib = require('zlib');
 var path = require('path');
 var mime = require('mime');
 var webvtt = require('./modules/webvtt');
-var client = require('./modules/redis');
+var redis = require('./modules/redis');
 var mailer = require('./modules/mailer');
 var validator = require('./modules/validator');
 var spawn = require('child_process').spawn;
@@ -14,6 +14,8 @@ var mkdirp = require('mkdirp');
 var bodyParser = require('body-parser')
 
 var app = express();
+
+var client = redis.createClient();
 
 app.use(bodyParser.json());         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
