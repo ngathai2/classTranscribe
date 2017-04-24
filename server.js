@@ -72,6 +72,7 @@ app.get('/manageCourse', function (request, response) {
 
 /* get the list of courses available */
 app.get('/manageCourse/get_user_courses', function(request, response) {
+  console.log("getting user courses");
   client.smembers("ClassTranscribe::Classes", function(err, result) {
     if(err) {
       console.log(err);
