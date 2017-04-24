@@ -78,7 +78,7 @@ app.get('/manageCourse/get_user_courses', function(request, response) {
   client.smembers("ClassTranscribe::Classes", function(err, result) {
     console.log("making query");
     if(err) {
-      console.log(err);
+      console.log("there is an error");
     }
     console.log(result);
     response.end(result);
